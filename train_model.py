@@ -92,9 +92,9 @@ y_train = np.array(y_train)
 # Define the model
 model = Sequential([
     Dense(128, input_shape=(len(x_train[0]),), activation='relu'),
-    Dropout(0.5),
+    Dropout(0.6),
     Dense(64, activation='relu'),
-    Dropout(0.5),
+    Dropout(0.65),
     Dense(len(y_train[0]), activation='softmax')
 ])
 
@@ -102,7 +102,7 @@ model = Sequential([
 sgd = SGD (learning_rate = 0.01, decay = 1e-6, momentum = 0.5, nesterov = True)
 model.compile (loss = 'categorical_crossentropy', optimizer = sgd, metrics = ['accuracy'])
 # Train the model
-model.fit(x_train, y_train, epochs = 200, batch_size = 5, verbose = 1)
+model.fit(x_train, y_train, epochs = 1500, batch_size = 5, verbose = 1)
 
 # Save the model
 model.save('mental_health_chatbot_model.h5')
