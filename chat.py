@@ -19,7 +19,8 @@ intents = json.loads (open('intents.json').read())
 
 words = pickle.load (open('words.pkl', 'rb'))
 classes = pickle.load (open('classes.pkl', 'rb'))
-model = load_model ('mental_health_chatbot_model.h5')
+
+model = load_model ('mental_health_chatbot_model.keras')
 
 def cleanUpSentence (sentence):
     sentenceWords = nltk.word_tokenize (sentence)
@@ -53,8 +54,9 @@ def predictClass (sentence):
 
 def getResponse (intentsList, intentsJson):
     tag = intentsList[0]['intent']
+    print(tag)
     listOfIntents = intentsJson['intents']
-    result = "I'm sorry, I didn't understand that."
+    #result = "I'm sorry, I didn't understand that."
     for i in listOfIntents:
         if i['tag'] == tag:
             result = random.choice (i['responses'])
